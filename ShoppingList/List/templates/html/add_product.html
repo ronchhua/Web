@@ -1,0 +1,31 @@
+{% extends 'html/base.html' %}
+
+
+{% block content %}
+    <section class="section">
+        <form method='POST' action="">    <!-- action only works when the URL is a valid URL (in urls.py) -->
+            {% csrf_token %}
+            
+            {% if operation == "add" or operation != "edit"%}
+
+            Item Name: <input type="text" class="input" name="item"/></br></br>
+            Cost: <input type="text" class="input" name="cost"/><br/></br>
+            Quantity: <input type="text" class="input" name="quantity"/><br/></br>
+            <button type="submit" class="button is-link">Add</button>
+            
+
+            {% endif %}
+
+            {% if operation == "edit" %}
+
+            Item Name: <input type="text" class="input" name="item" placeholder= "{{item.item}}" value="{{item.item}}"/></br></br>
+            Cost: <input type="text" class="input" name="cost" placeholder= "{{item.cost}}" value="{{item.cost}}"/><br/></br>
+            Quantity: <input type="text" class="input" name="quantity" placeholder= "{{item.quantity}}" value="{{item.quantity}}"/><br/></br>
+            <button type="submit" class="button is-warning">Edit</button>
+            
+
+            {% endif %}
+                     
+        </form>
+    </section>
+{% endblock %}

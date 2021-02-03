@@ -1,0 +1,69 @@
+{% extends 'html/base.html' %}
+
+{% block content %}
+
+<section class="section">
+    <h1 class="title">Products</h1>
+    <table class="table is-striped is-fullwidth">
+        <tr>
+            <th>Product name</th>
+            <th>Cost
+<!--   Didn't implement sorting
+                {% if sort == "neutral" %}
+                    <a class = "" href = "{% url 'sort' 'descend' %}">  Lets make the first click descending order
+                        <i class="fa fa-sort"></i>
+                    </a>
+                {% endif %}
+
+                {% if sort == "ascending" %}
+                    <a class = "" href = "{% url 'sort' 'descend' %}">  Lets make the first click descending order
+                        <i class="fa-sort-up"></i>
+                    </a>
+                {% endif %}
+
+                {% if sort == "descending" %}
+                    <a class = "" href = "{% url 'sort' 'ascend' %}">  Lets make the first click descending order
+                        <i class="fa-sort-desc"></i>
+                    </a>
+
+                {% endif %}
+-->
+
+            </th>
+            <th>Quantity</th>
+        </tr>
+
+        {% for item in Items %}
+
+            <tr>
+                <td>{{item.item}}</td>
+                <td>{{item.cost}}</td>
+                <td>{{item.quantity}}</td>
+                <td>
+                    <a class="button is-warning" href="{% url 'edit' item.id %}">
+                      <i class="fa fa-fw fa-pencil"></i> Edit  
+                    </a>
+                </td>
+                <td>
+                    <a class="button is-danger" href = "{% url 'delete' item.id%}">
+                      <i class="fa fa-fw fa-trash"></i> Delete
+                    </a>
+                </td>
+            </tr>
+
+
+        {% endfor %}
+
+
+    </table>
+
+
+     <a class = "button is-primary" href="{% url 'add_the_product' %}">Add Product</a>  <!-- You can basically use the "name" of the url (defined in urls.py)-->
+    <!-- <a class = "button is-primary" href="add/">Add Product</a> -->
+    
+
+</section>
+
+
+
+{% endblock %}

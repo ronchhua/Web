@@ -1,0 +1,51 @@
+{% extends 'html/base.html' %}
+
+
+
+{% block content %}
+
+<div id="app">
+
+ <section class="section">
+  <div class="">
+    <div v-if="user_wants_to_add_post === true" class="is-fullwidth">  <!-- This will display when user clicks on "+", the Post and Cancel buttons show-->
+     <div class="field">
+      <textarea v-model="new_post" class="textarea is-fullwidth is-dark" placeholder="Enter new post here"></textarea>
+     </div>
+     
+     <button @click="add_post(); clear_textarea_for_post(); unallow_new_post()" class="button is-primary is-size-6">Post</button> <!-- Once posted or cancel, we change user_wants_to_add_post to false so we display the "+"-->
+     <button @click="clear_textarea_for_post(); unallow_new_post()" class="button is-warning is-size-6">Cancel</button>
+    
+    </div>
+  </div>
+
+   <div v-if="!user_wants_to_add_post">  <!-- This will display the "+" button when the user isn't typing a post. This is the default display unless the user clicks this button. In which case the above will show instead of this-->
+    <button @click="allow_new_post()" class="button is-black is-size-6">
+      <i class="fa fa-plus fa-fw"></i> Add Post
+    </button>
+   </div>
+   
+  </section>  
+  
+  <section class="section">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical">
+        <div v-for="post in posts" class="tile is-child notification is-light">
+
+          <div class=""> [[ post.text ]] </div>   
+
+          <span style="cursor: pointer;" @click="delete_post(post.id)" class="has-text-danger is-pulled-right is-size-4" v-bind:title="display_delete">
+            <i class="fa fa-trash fa-fw"></i>
+          </span>
+          
+          
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+{% endblock content %}

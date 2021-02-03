@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<!-- Essentially this base.html is like the parent and all other html files that -->
+<!-- " extends 'html/base.html'  will have it's properties like the navbar and bulma-->
+
+<html>
+ <head>
+  <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+ </head>
+
+ <body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+        </div>
+    </nav>
+
+ {% block content %}
+ 
+ {% endblock content %}
+ </body>
+</html>
